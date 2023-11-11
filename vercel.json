@@ -15,7 +15,7 @@
         },
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "*"
+          "value": "localhost:5173"
         },
         {
           "key": "Access-Control-Allow-Methods",
