@@ -35,5 +35,18 @@ def country_names():
     return jsonify(names)
 
 
+@app.route("/info/<country>")
+def get_country_info(country):
+    targetCountry = None
+    for c in data:
+        if c["properties"]["name_long"] == country:
+            targetCountry = c
+            break
+
+    response = c["properties"]
+
+    return jsonify(response)
+
+
 if __name__ == "__main__":
     app.run(port=8000)
