@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
-import json
+from unidecode import unidecode
 import numpy as np
+
+import json
 
 app = Flask(__name__)
 
@@ -38,12 +40,16 @@ def country_names():
 @app.route("/info/<country>")
 def get_country_info(country):
     targetCountry = None
+
     for c in data:
-        if c["properties"]["name_long"] == country:
+        if (
+            unidecode(c["properties"]["name_long"].replace(" ", "").replace("'", ""))
+            == country
+        ):
             targetCountry = c
             break
 
-    response = c["properties"]
+    response = targetCountry["properties"]
 
     return jsonify(response)
 
