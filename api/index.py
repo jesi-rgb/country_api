@@ -18,7 +18,10 @@ def get_random_country(countries):
 
 def get_country_names(countries):
     def mapper(country):
-        return country["properties"]["name_long"]
+        return {
+            "name_long": country["properties"]["name_long"],
+            "continent": country["properties"]["region_un"],
+        }
 
     return list(map(mapper, countries))
 
